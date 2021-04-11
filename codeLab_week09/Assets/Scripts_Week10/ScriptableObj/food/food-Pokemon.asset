@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionTheme: 2
   pointLevel: 30
-  question: Which Pokemon is found in many Pokemon dishes?
+  question: Which Pokemon is found in many Pokemon food dishes?
   answer1: Slowpoke
   answer2: Exeggcute
   answer3: Grimer

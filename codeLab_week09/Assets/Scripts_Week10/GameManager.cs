@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public int height=4;
     public int xStart;
     public int yStart;
+    public int score;
 
     // three differetn UIs
     public GameObject gameUI;
@@ -26,6 +27,8 @@ public class GameManager : MonoBehaviour
     public Sprite twentyPointSprite;
     public Sprite thirtyPointSprite;
     public Sprite fortyPointSprite;
+
+    private bool answerChosen = false;
     private void Awake()
     {
         instance = this;
@@ -33,6 +36,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        gameUI.SetActive(true);
+        questionUI.SetActive(false);
+        gameOverUI.SetActive(false);
         questionGrid = new GameObject[width, height];
         SetUpGrid();
     }
@@ -216,11 +222,56 @@ public class GameManager : MonoBehaviour
     {
         gameUI.SetActive(false);
         questionUI.SetActive(true);
+        
+        HideButtons();
 
         QuestionManager.instance.questionText.text = currentQuestion.question;
-        QuestionManager.instance.answer1Text.text = currentQuestion.answer1;
-        QuestionManager.instance.answer2Text.text = currentQuestion.answer2;
-        QuestionManager.instance.answer3Text.text = currentQuestion.answer3;
-        QuestionManager.instance.answer4Text.text = currentQuestion.answer4;
+        QuestionManager.instance.answer1Text.text = "1. " + currentQuestion.answer1;
+        QuestionManager.instance.answer2Text.text = "2. " + currentQuestion.answer2;
+        QuestionManager.instance.answer3Text.text = "3. " + currentQuestion.answer3;
+        QuestionManager.instance.answer4Text.text = "4. " + currentQuestion.answer4;
+    }
+
+    public void HideButtons()
+    {
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                questionGrid[x,y].SetActive(false);
+            }
+        }
+    }
+
+    public void ShowButtons()
+    {
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                questionGrid[x,y].SetActive(true);
+            }
+        }
+    }
+
+    public void AnswerPress(int answerNum)
+    {
+        if (!answerChosen)
+        {
+            answerChosen = true;
+            QuestionManager.instance.backButton.SetActive(true);
+
+            if (currentQuestion.correctAnswer == answerNum)
+            {
+                score += currentQuestion.pointLevel;
+                QuestionManager.instance.correctText.SetActive(true);
+                QuestionManager.instance.wrongText.SetActive(false);
+            }
+            else
+            {
+                QuestionManager.instance.correctText.SetActive(false);
+                QuestionManager.instance.wrongText.SetActive(true);
+            }
+        }
     }
 }

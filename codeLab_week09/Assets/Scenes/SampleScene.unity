@@ -1348,7 +1348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shuffleList:
   - {fileID: 11400000, guid: bc2e9d92d308cd94d8090868511b7292, type: 2}
-  - {fileID: 11400000, guid: 3130094d5b53d484b9d44a833d828c73, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: a20b67db3f40ee54db784aee04bb36d9, type: 2}
   - {fileID: 11400000, guid: 544d77a10400c1e4590dd9027fa8676c, type: 2}
   - {fileID: 11400000, guid: 253230cbecac8054e9ab8d9cb313866f, type: 2}
@@ -1362,13 +1362,13 @@ MonoBehaviour:
   answer2Text: {fileID: 145347877}
   answer3Text: {fileID: 1579847538}
   answer4Text: {fileID: 1721963157}
+  nextButtonText: {fileID: 553473684}
+  scoreText: {fileID: 588605418}
   CorrectText: {fileID: 1977171483}
   WrongText: {fileID: 1387401109}
   nextButton: {fileID: 307068374}
-  nextButtonText: {fileID: 553473684}
   GameUI: {fileID: 472473901}
   EndUI: {fileID: 556898926}
-  scoreText: {fileID: 588605418}
 --- !u!4 &899542569
 Transform:
   m_ObjectHideFlags: 0

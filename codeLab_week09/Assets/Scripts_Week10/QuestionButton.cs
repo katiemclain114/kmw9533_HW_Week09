@@ -15,5 +15,11 @@ public class QuestionButton : MonoBehaviour
     private void OnMouseDown()
     {
         Debug.Log(question.question);
+        if (!isQuestionAnswered)
+        {
+            isQuestionAnswered = true;
+            GameManager.instance.currentQuestion = question;
+            GameManager.instance.ShowQuestionUIHideGameUI();
+        }
     }
 }

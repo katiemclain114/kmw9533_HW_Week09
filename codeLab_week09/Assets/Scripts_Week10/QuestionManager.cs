@@ -12,9 +12,15 @@ public class QuestionManager : MonoBehaviour
     public Text answer2Text;
     public Text answer3Text;
     public Text answer4Text;
+
+    public GameObject correctText;
+    public GameObject wrongText;
+
+    public GameObject backButton;
     private void Awake()
     {
         instance = this;
+        backButton.SetActive(false);
     }
     
 }
