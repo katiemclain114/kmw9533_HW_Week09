@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93a89c3844e2b3a4c8faa10204ab5fd6, type: 3}
-  m_Name: CounterStrikeQuestion
+  m_Name: codeLab-1
   m_EditorClassIdentifier: 
-  question: What game was Counter Strike birthed from?
-  questionType: 97
-  pointsType: 49
-  points: 0
-  answer1: Call of Duty
-  answer2: Half-Life
-  answer3: Battlefield
-  answer4: Doom
-  correctAnswer: 2
+  questionTheme: 0
+  pointLevel: 10
+  question: Is there a time and place for copy and paste?
+  answer1: No, you should always retype information for learning experience
+  answer2: Yes, when you have a bunch of repeating information
+  answer3: No, you might make a mistake
+  answer4: Yes, it is much faster
+  correctAnswer: 3

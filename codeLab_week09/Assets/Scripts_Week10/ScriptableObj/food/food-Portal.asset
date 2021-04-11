@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93a89c3844e2b3a4c8faa10204ab5fd6, type: 3}
+  m_Name: food-Portal
+  m_EditorClassIdentifier: 
+  questionTheme: 2
+  pointLevel: 10
+  question: '"The cake is __?__"'
+  answer1: really good
+  answer2: 'made with science '
+  answer3: a prize
+  answer4: a lie
+  correctAnswer: 4
