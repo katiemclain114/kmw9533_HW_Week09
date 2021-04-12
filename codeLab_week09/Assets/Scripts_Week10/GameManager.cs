@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,6 +30,23 @@ public class GameManager : MonoBehaviour
     public Sprite fortyPointSprite;
 
     private bool answerChosen = false;
+
+    //Health System
+    public Sprite redHeart;
+    public Sprite blackHeart;
+    public List<Image> healthes;
+    public int health = 4;
+
+    //Points System
+    public int currentPoints;
+    public Text pointsText;
+    public int currentPointsLevel;
+
+    //GameOver System
+    public Text finalScoreText;
+    public int questionsLeftToBeAnswered = 12;
+
+
     private void Awake()
     {
         instance = this;
@@ -42,22 +60,6 @@ public class GameManager : MonoBehaviour
         questionGrid = new GameObject[width, height];
         SetUpGrid();
     }
-
-    // public void AssignQuestionsFromPoolToChart()
-    // {
-    //     for(var i = 0; i< questionsPool.Count; i++)
-    //     {
-    //         switch(questionsPool[i].questionType)
-    //         {
-    //             case 'a':
-    //                 
-    //                 break;
-    //             case 'b':
-    //                 break;
-    //
-    //         }
-    //     }
-    // }
 
     public void SetUpGrid()
     {
@@ -209,15 +211,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public void AssignQuestionsFromColumeToSlot(char questionType, char pointsType)
-    {
-        switch (pointsType)
-        {
-            case '1':
 
-                break;
-        }
-    }
     public void ShowQuestionUIHideGameUI()
     {
         gameUI.SetActive(false);
@@ -230,6 +224,23 @@ public class GameManager : MonoBehaviour
         QuestionManager.instance.answer2Text.text = "2. " + currentQuestion.answer2;
         QuestionManager.instance.answer3Text.text = "3. " + currentQuestion.answer3;
         QuestionManager.instance.answer4Text.text = "4. " + currentQuestion.answer4;
+    }
+
+    public void ShowGameUiHideQuestionUI()
+    {
+        QuestionManager.instance.correctText.SetActive(false);
+        QuestionManager.instance.wrongText.SetActive(false);
+        QuestionManager.instance.backButton.SetActive(false);
+        answerChosen = false;
+
+        gameUI.SetActive(true);
+        questionUI.SetActive(false);
+
+        UpdatePoints();
+
+        ShowButtons();
+
+        DeathCheck();
     }
 
     public void HideButtons()
@@ -266,12 +277,40 @@ public class GameManager : MonoBehaviour
                 score += currentQuestion.pointLevel;
                 QuestionManager.instance.correctText.SetActive(true);
                 QuestionManager.instance.wrongText.SetActive(false);
+                currentPoints += currentPointsLevel;
             }
             else
             {
                 QuestionManager.instance.correctText.SetActive(false);
                 QuestionManager.instance.wrongText.SetActive(true);
+                LoseHealth();
             }
         }
+    }
+
+    public void LoseHealth()
+    {
+        health -= 1;
+
+        healthes[health].sprite = blackHeart;
+    }
+
+    public void UpdatePoints()
+    {
+        pointsText.text = "Points:" + currentPoints;
+    }
+
+    public void DeathCheck()
+    {
+       if(health <= 0 || questionsLeftToBeAnswered <= 0)
+       {
+            gameUI.SetActive(false);
+            questionUI.SetActive(false);
+            HideButtons();
+
+            gameOverUI.SetActive(true);
+
+            finalScoreText.text = "Your Final Score Is:" + currentPoints;
+       }
     }
 }
