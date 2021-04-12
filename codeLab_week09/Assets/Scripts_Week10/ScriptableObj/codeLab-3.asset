@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionTheme: 0
   pointLevel: 30
-  question: 
-  answer1: 
-  answer2: 
-  answer3: 
-  answer4: 
-  correctAnswer: 0
+  question: Something is wrong with your code. What?
+  answer1: Missing semicolon
+  answer2: No comments
+  answer3: Infinite loop
+  answer4: Too many debugs
+  correctAnswer: 2

@@ -3153,8 +3153,8 @@ MonoBehaviour:
   twentyPointSprite: {fileID: 21300000, guid: 46ecc2db1907d8a4b8e3c54a5d8b46a4, type: 3}
   thirtyPointSprite: {fileID: 21300000, guid: a4080bc98e873e54f9cad5de208a11d5, type: 3}
   fortyPointSprite: {fileID: 21300000, guid: 8bf7f0923d5190a4dbc70df4c7822149, type: 3}
-  redHeart: {fileID: 21300000, guid: 7cf5f1cf19021c74fa1690760410b2df, type: 3}
-  blackHeart: {fileID: 21300000, guid: 4c9dd0d463995664db8c83d7d0650dda, type: 3}
+  redHeart: {fileID: 21300000, guid: aeec6dbe226cc664a8fc1b71a363782b, type: 3}
+  blackHeart: {fileID: 21300000, guid: cd95cbdcb9c8b21409ff65a5bb356f4a, type: 3}
   healthes:
   - {fileID: 253857920}
   - {fileID: 312411497}

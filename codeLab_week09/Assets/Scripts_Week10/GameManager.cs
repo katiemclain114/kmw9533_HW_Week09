@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    //insert all of the questions
     public List<TriviaQuestionObject> questionsPool;
     public GameObject[,] questionGrid;
     public int width=3;
@@ -15,20 +16,23 @@ public class GameManager : MonoBehaviour
     public int yStart;
     public int score;
 
-    // three differetn UIs
+    // three different UIs
     public GameObject gameUI;
     public GameObject questionUI;
     public GameObject gameOverUI;
 
+    //game object that is stored in questionGrid
     public GameObject gridButtonPrefab;
     // every time player pressed the button, pass in a question
     public TriviaQuestionObject currentQuestion;
 
+    //display different sprites for point value
     public Sprite tenPointSprite;
     public Sprite twentyPointSprite;
     public Sprite thirtyPointSprite;
     public Sprite fortyPointSprite;
 
+    //keeps track of if the player has input an answer for a specific question
     private bool answerChosen = false;
 
     //Health System
@@ -59,8 +63,15 @@ public class GameManager : MonoBehaviour
         gameOverUI.SetActive(false);
         questionGrid = new GameObject[width, height];
         SetUpGrid();
+
+        for (int i = 0; i < healthes.Count; i++)
+        {
+            healthes[i].sprite = redHeart;
+        }
     }
 
+    //instantiate new question button for each grid place
+    //use switch statements to put correct question in correct place
     public void SetUpGrid()
     {
         for (int x = 0; x < width; x++)
@@ -212,6 +223,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //hides the game ui and sets up question ui
     public void ShowQuestionUIHideGameUI()
     {
         gameUI.SetActive(false);
@@ -226,6 +238,7 @@ public class GameManager : MonoBehaviour
         QuestionManager.instance.answer4Text.text = "4. " + currentQuestion.answer4;
     }
 
+    //resets question ui and hides it then shows the game ui
     public void ShowGameUiHideQuestionUI()
     {
         QuestionManager.instance.correctText.SetActive(false);
@@ -243,6 +256,7 @@ public class GameManager : MonoBehaviour
         DeathCheck();
     }
 
+    //hides every game object in the grid
     public void HideButtons()
     {
         for (int x = 0; x < width; x++)
@@ -254,6 +268,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //reshows every game object in the grid
     public void ShowButtons()
     {
         for (int x = 0; x < width; x++)
@@ -265,13 +280,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //on question when player chooses clicks an answer button
     public void AnswerPress(int answerNum)
     {
+        //player hasnt chosed answer yet
         if (!answerChosen)
         {
             answerChosen = true;
             QuestionManager.instance.backButton.SetActive(true);
 
+            //check if answer was correct
             if (currentQuestion.correctAnswer == answerNum)
             {
                 score += currentQuestion.pointLevel;
@@ -288,6 +306,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //if player answers wrong loose one health and change one heart black
     public void LoseHealth()
     {
         health -= 1;
@@ -295,11 +314,13 @@ public class GameManager : MonoBehaviour
         healthes[health].sprite = blackHeart;
     }
 
+    //keep point text equal to currentPoints
     public void UpdatePoints()
     {
         pointsText.text = "Points:" + currentPoints;
     }
 
+    //go to end screen in player has lost all health or answered all questions
     public void DeathCheck()
     {
        if(health <= 0 || questionsLeftToBeAnswered <= 0)

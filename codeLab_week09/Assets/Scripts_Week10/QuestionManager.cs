@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class QuestionManager : MonoBehaviour
 {
+    //keeps track of ui elements for the questions
+    //could combine with gamemanager but keeps it less crowded 
     public static QuestionManager instance;
 
     public Text questionText;

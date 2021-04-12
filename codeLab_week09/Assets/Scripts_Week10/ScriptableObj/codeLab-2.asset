@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionTheme: 0
   pointLevel: 20
-  question: 
-  answer1: 
-  answer2: 
-  answer3: 
-  answer4: 
-  correctAnswer: 0
+  question: Your teacher just finished a statement. How do you respond?
+  answer1: 'Say nothing '
+  answer2: Ask a question
+  answer3: Cool
+  answer4: Adjust your code
+  correctAnswer: 3

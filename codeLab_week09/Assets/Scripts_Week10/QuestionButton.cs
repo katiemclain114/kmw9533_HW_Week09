@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class QuestionButton : MonoBehaviour
 {
+    //keeps a question and shows sprite equal to point value
     public TriviaQuestionObject question;
     public SpriteRenderer pointValueSprite;
 
+    //if question has already been answered make it black
     private bool isQuestionAnswered = false;
     private SpriteRenderer sprite;
     
@@ -15,7 +17,7 @@ public class QuestionButton : MonoBehaviour
     private void OnMouseDown()
     {
         sprite = gameObject.GetComponent<SpriteRenderer>();
-        Debug.Log(question.question);
+        //Debug.Log(question.question);
         if (!isQuestionAnswered)
         {
             sprite.color = Color.black;

@@ -5,25 +5,27 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewTriviaQuestion", menuName = "ScriptableObjects/TriviaQuestion")]
 public class TriviaQuestionObject : ScriptableObject
 {
+    //question categories
     public enum QuestionTheme
     {
         CodeLab,
         Games,
         Food
     }
-    // a - game101, b - codelab1
+    
     public QuestionTheme questionTheme;
-    // make it char coz I dont know how to swtich in form of 'string'
-    // 1 - 200, 2 - 400, 3 - 600, 4 - 800, 5 - 1000
+    //keep track of with row question should be on and how many points to give
     public int pointLevel;
     
-    //i made each question a scriptable object to store info on that question
+    //the question
     public string question;
 
+    //answers
     public string answer1;
     public string answer2;
     public string answer3;
     public string answer4;
 
+    //used to determine if player was right
     public int correctAnswer;
 }
